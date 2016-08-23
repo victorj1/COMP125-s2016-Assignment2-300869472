@@ -29,16 +29,53 @@
     paragraphs[2] = "2) I have built and upgraded multiple computer systems for family members and for a private business. I picked parts that would meet price requirements and suit the tasks to be perfomed on the systems.";
     paragraphs[3] = "3) I am working to get into better shape to be able to win some badminton tournaments and to represent Centennial College on the badminton team.";
     
-     // check to see if paragraph one exists
-    var paragraphElementLength = paragraphElements.length;
 
-    // check to see if paragraph one exists
-    for (var index = 0; index < paragraphElements.length; index++) { 
-        if(paragraphElements[index]) { 
-         paragraphElements[index].textContent = paragraphs[index]; 
 
+ var paragraphElementsLength = paragraphElements.length - 1;
+    // check to see if the data exists
+    for (var index = paragraphElementsLength; index >= 0; index--) {
+        //inject html tags along with the text
+        console.log("JavaScript working");
+        if (paragraphElements[index]) {
+            paragraphElements[index].innerHTML = paragraphs[index];
         }
     }
-    
-    
+
+
+  //create a reference to the sendButton
+    var sendButton = document.getElementById("sendButton");
+
+    // event listener
+    sendButton.addEventListener("click", sendButtonClick);
+
+    // event handler function
+    function sendButtonClick(event) {
+        console.log("clicked");
+    }
+    //create a reference to the firstName field
+    var firstName = document.getElementById("firstName");
+
+    //create a reference to the form
+    var contactForm = document.getElementById("contactForm");
+
+    contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        console.log("submitted");
+        showFormInput();
+        contactForm.reset();
+
+    });
+
+    // function showing the input from each form field in the console    
+    function showFormInput() {
+        console.log("*******************************")
+        console.log("First Name: " + firstName.value);
+        console.log("Last Name: " + lastName.value);
+        console.log("E-mail: " + email.value);
+        console.log("Contact number: " + contactNumber.value);
+        console.log("Message: " + message.value);
+        console.log("*******************************")
+    }
+
+
 })();
